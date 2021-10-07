@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR CODE</title>
+    <script src="./assets/qr.js"></script>
+
+</head>
+<body>
+    <div id="reader"></div>
+    <script>        
+        const html5QrCode = new Html5Qrcode("reader");
+        const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+            
+            html5QrCode.stop().then((ignore) => {
+                reader.style.display="none";
+                window.location="./experience.html";
+            })
+        };
+        const config = { fps: 10, qrbox: { width: 200, height: 200 } };
+
+        html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
+
+    </script>
+</body>
+</html>
